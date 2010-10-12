@@ -1,0 +1,4 @@
+# ignore these file extensions
+*.ncb
+*.suo
+*.user
