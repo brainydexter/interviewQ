@@ -1,7 +1,6 @@
 /*
 The functions are based off the following places:
 - http://cslibrary.stanford.edu/103/LinkedListBasics.pdf
-- http://cslibrary.stanford.edu/105/LinkedListProblems.pdf
 */
 
 #ifndef LINKEDLIST_H

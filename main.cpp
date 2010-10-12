@@ -1,4 +1,5 @@
 #include "LinkedListNode.h"
+#include "Problems_LinkedList.h"
 
 #include <stdio.h>
 #include <iostream>
@@ -11,7 +12,11 @@ int main()
     gPrintFn = printf;
 
     LinkedListNode* node = Create123_LinkedList();
-     InsertAtTail_LinkedList(&node, 4);
+    
+    gPrintFn("Old Linked list: "); Print_LinkedList(node);
+
+    /*
+    InsertAtTail_LinkedList(&node, 1);
 
     gPrintFn("Length of Linked List is: %d \n", Length_LinkedList(node));
 
@@ -21,6 +26,20 @@ int main()
     LinkedListNode* copyList = CopyRecursive_LinkedList(node);
     gPrintFn("New linked list: ");
     Print_LinkedList(copyList);
+
+    gPrintFn("1 occurs %d times in list \n", CountN_LinkedList(node, 1));
+
+    for(int i = 0; i < Length_LinkedList(node); i++)
+    {
+        gPrintFn("Index %d :: Element in list: %d \n", i, GetNth_LinkedList(node, i) );
+    }
+
+    Delete_LinkedList(&node);
+    */
+
+    int val = Pop_LinkedList(&node);
+
+    gPrintFn("New Linked list: "); Print_LinkedList(node);
 
     return 1;
 }
