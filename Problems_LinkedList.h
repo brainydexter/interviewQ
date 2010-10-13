@@ -22,4 +22,29 @@ int Pop_LinkedList(LinkedListNode** headRef);
 
 // insert element with value at index (0 .. length) (inclusive of both 0 and length)
 void InsertNth_LinkedList(LinkedListNode** headRef, int index, int value);
+
+// list is in increasing order, this function inserts newNode in it at the correct sorted position in the list
+void SortedInsert_LinkedList(LinkedListNode** headRef, LinkedListNode* newNode);
+
+// Given a list; rearranges its nodes so they are sorted in the increasing order
+void InsertSort_LinkedList(LinkedListNode** headRef);
+
+// Appends b list onto the end of a. Sets b to NULL
+void Append_LinkedList(LinkedListNode** AHeadRef, LinkedListNode** BHeadRef);
+
+// Given a list, split it into two sublists
+// if number of elements is odd, extra element should go in front list
+void FrontBackSplit_LinkedList(LinkedListNode** headRef, LinkedListNode** Alist, LinkedListNode** Blist);
+
+// Remove/delete Duplicates from sorted (increasing) list
+// traverse only once
+void RemoveDuplicates_SortedLinkedList(LinkedListNode** headRef);
+
+// Remove B's head => Push B's Head onto front of A
+// assert if the sources are empty
+void MoveNode_LinkedList(LinkedListNode** aHeadRef, LinkedListNode** bHeadRef);
+
+// splits original list into two lists where each child list contains alternating elements from original list
+void AlternatingSplit_LinkedList(LinkedListNode** headRef, LinkedListNode** Alist, LinkedListNode** Blist);
+
 #endif

@@ -117,3 +117,162 @@ void InsertNth_LinkedList(LinkedListNode** headRef, int index, int value)
 	gPrintFn("After inserting into Linked List:"); Print_LinkedList(*headRef);
 }
 
+// list is in increasing order, this function inserts newNode in it at the correct sorted position in the list
+void SortedInsert_LinkedList( LinkedListNode** headRef, LinkedListNode* newNode )
+{
+    // using a dummy header enables to write a generic while loop
+    LinkedListNode dummy;
+    dummy.next = *headRef;
+
+    LinkedListNode* current = &dummy;
+
+    while (current->next != 0 && newNode->data > current->next->data)   //current->next since current is initialized with dummy
+    {
+        current = current->next;
+    }
+
+    //found location where to insert
+    newNode->next = current->next;
+    current->next = newNode;
+
+    *headRef = dummy.next;
+}
+
+void InsertSort_LinkedList( LinkedListNode** headRef )
+{
+    LinkedListNode* result = 0;
+    LinkedListNode* current = *headRef;
+    LinkedListNode* nextNode = 0;
+
+    while (current != 0)
+    {
+        nextNode = current->next;
+        SortedInsert_LinkedList(&result, current);
+
+        current = nextNode;
+    }
+
+    *headRef = result;
+}
+
+// Appends b list onto the end of a. Sets b to NULL
+void Append_LinkedList( LinkedListNode** AHeadRef, LinkedListNode** BHeadRef )
+{
+    LinkedListNode dummyHA;
+    dummyHA.next = *AHeadRef;
+
+    LinkedListNode* currentA = &dummyHA;
+
+    while (currentA->next != 0)
+    {
+        currentA = currentA->next;
+    }
+
+    // currentA now points to the last element of A
+    // B should be appended to A here
+    currentA->next = *BHeadRef;
+
+    *AHeadRef = dummyHA.next;
+
+    *BHeadRef = 0;
+}
+
+// Given a list, split it into two sublists
+// if number of elements is odd, extra element should go in front list
+void FrontBackSplit_LinkedList( LinkedListNode** headRef, LinkedListNode** Alist, LinkedListNode** Blist )
+{
+    int numElements = Length_LinkedList(*headRef);
+    int i = 0;
+
+    LinkedListNode* current = *headRef;
+    LinkedListNode* Atail, *Acurrent = 0;
+    LinkedListNode* Bcurrent = 0;
+
+    *Alist = current;
+    Acurrent = *Alist;
+    Atail = Acurrent;
+
+    while (i < (numElements/2) )
+    {
+        Atail = current;
+        current = current->next;
+        i++;
+    }
+
+    // Pointing BList to the right address
+    *Blist = current;
+
+    // cutting off list A
+    while( Acurrent != Atail)
+    {
+        Acurrent = Acurrent->next;
+    }
+    Acurrent->next = 0;
+
+    // if odd number of elements: move B's head to be A's tail
+    // Acurrent is the tail of A
+    if (numElements%2 != 0)
+    {
+        Bcurrent = *Blist;
+
+        // updated B list
+        *Blist = Bcurrent->next;
+
+        Acurrent->next = Bcurrent;
+        Bcurrent->next = 0;
+    }
+}
+
+void RemoveDuplicates_SortedLinkedList( LinkedListNode** headRef )
+{
+    LinkedListNode* current = *headRef;
+
+    while(current != 0)
+    {
+        while(current->next!= 0 && current->data == current->next->data)
+        {
+            LinkedListNode* node = current->next;
+            current->next = current->next->next;
+
+            delete node;
+        }
+
+        current = current->next;
+    }
+}
+
+// Remove B's head => Push B's Head onto front of A
+// assert if the sources are empty
+void MoveNode_LinkedList( LinkedListNode** aHeadRef, LinkedListNode** bHeadRef )
+{
+// assert if a or b list is empty
+
+    LinkedListNode* bHead = *bHeadRef;
+    *bHeadRef = (*bHeadRef)->next;
+
+    bHead->next = *aHeadRef;
+    *aHeadRef = bHead;
+}
+
+
+// splits original list into two lists where each child list contains alternating elements from original list
+void AlternatingSplit_LinkedList( LinkedListNode** headRef, LinkedListNode** Alist, LinkedListNode** Blist )
+{
+    int i = 0;
+
+    while (*headRef != 0)
+    {
+        if ( i%2 == 0)
+        {
+            InsertAtTail_LinkedList(Alist, (*headRef)->data);
+        } 
+        else
+        {
+            InsertAtTail_LinkedList(Blist, (*headRef)->data);
+        }
+
+        *headRef = (*headRef)->next;
+        i++;
+    }
+}
+
