@@ -20,4 +20,6 @@ void Delete_LinkedList(LinkedListNode** headRef);
 // input is a non-empty list. Deletes head node. Return head node's data
 int Pop_LinkedList(LinkedListNode** headRef);
 
+// insert element with value at index (0 .. length) (inclusive of both 0 and length)
+void InsertNth_LinkedList(LinkedListNode** headRef, int index, int value);
 #endif

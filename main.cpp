@@ -11,9 +11,9 @@ int main()
 {
     gPrintFn = printf;
 
-    LinkedListNode* node = Create123_LinkedList();
+    // LinkedListNode* node = Create123_LinkedList();
     
-    gPrintFn("Old Linked list: "); Print_LinkedList(node);
+    // gPrintFn("Old Linked list: "); Print_LinkedList(node);
 
     /*
     InsertAtTail_LinkedList(&node, 1);
@@ -35,11 +35,18 @@ int main()
     }
 
     Delete_LinkedList(&node);
-    */
+    
 
     int val = Pop_LinkedList(&node);
 
     gPrintFn("New Linked list: "); Print_LinkedList(node);
+	*/
+
+	LinkedListNode* node = 0;
+
+	InsertNth_LinkedList(&node, 0, 13);
+	InsertNth_LinkedList(&node, 1, 42);
+	InsertNth_LinkedList(&node, 1, 5);
 
     return 1;
 }

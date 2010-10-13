@@ -44,6 +44,11 @@ void Print_LinkedList( LinkedListNode* head )
 {
     LinkedListNode* current = head;
 
+	if(current == 0)
+	{
+		gPrintFn("List is Empty.");
+	}
+	
     while(current != 0)
     {
         gPrintFn(" %d ", current->data);
