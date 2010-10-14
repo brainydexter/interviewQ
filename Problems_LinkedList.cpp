@@ -276,3 +276,126 @@ void AlternatingSplit_LinkedList( LinkedListNode** headRef, LinkedListNode** Ali
     }
 }
 
+// Merges nodes from two list to return one list
+LinkedListNode* ShuffleMerge_LinkedList( LinkedListNode* Alist, LinkedListNode* Blist )
+{
+    LinkedListNode dummy;
+
+    LinkedListNode *current = &dummy;
+    current->next = 0;      // initializing to 0 :: in case both A & B are empty => 
+
+    while (Alist != 0 || Blist != 0)        // run till both A & B are not empty
+    {
+        if (Alist != 0)
+        {
+            current->next = Alist;
+            current = current->next;
+
+            Alist = Alist->next;
+        }
+
+        if (Blist != 0)
+        {
+            current->next = Blist;
+            current = current->next;
+
+            Blist = Blist->next;
+        }
+    }
+
+    return dummy.next;
+}
+
+// Given 2 lists in increasing order
+// Returns a sorted merge list
+LinkedListNode* SortedMerge_LinkedList( LinkedListNode* Alist, LinkedListNode* Blist )
+{
+    LinkedListNode dummy;
+    dummy.next = 0;
+
+    LinkedListNode* current = &dummy;
+
+    while( Alist != 0 && Blist != 0)
+    {
+            while( ( Alist != 0 && Blist != 0) &&       // need to check for null since lists are incremented in top most loop
+                    ( Alist->data >= Blist->data )
+                )
+            {
+                current->next = Blist;
+                current = current->next;
+
+                Blist = Blist->next;
+            }
+
+            while ( ( Alist != 0 && Blist != 0) &&      // need to check for null since lists are incremented in top most loop
+                ( Blist->data >= Alist->data )
+                  )
+            {
+                current->next = Alist;
+                current = current->next;
+
+                Alist = Alist->next;
+            }
+    }
+
+    if(Alist != 0)
+    {
+        current->next = Alist;
+    }
+
+    if(Blist != 0)
+    {
+        current->next = Blist;
+    }
+
+    return dummy.next;
+}
+
+// returns true if the given list is sorted in creasing order
+bool IsSorted_LinkedList( LinkedListNode* head ) 
+{
+    if(head == 0)               // list has no elements
+        return false;
+
+    if (head->next == 0)        // list has only 1 element
+        return true;
+
+    // list has atleast two elements
+
+    while (
+        (head->next != 0) &&
+        (head->data < head->next->data)
+        )
+    {
+        head = head->next;
+    }
+    // control reached here if tail is reached or list is not sorted
+
+    if(head->next == 0)
+        return true;
+    else
+        return false;
+}
+
+// given a list => split the list into two smaller lists and merge them into a single sorted list
+void MergeSort_LinkedList( LinkedListNode** headRef )
+{
+    if (*headRef == 0 || (*headRef)->next == 0) // list is empty or only 1 element :: nothing much to do
+    {
+        return;
+    }
+
+    if(!IsSorted_LinkedList(*headRef))
+    {
+        LinkedListNode* Alist, *Blist;
+        Alist = Blist = 0;
+
+        FrontBackSplit_LinkedList(headRef, &Alist, &Blist);
+
+        MergeSort_LinkedList(&Alist);
+        MergeSort_LinkedList(&Blist);
+
+        *headRef = SortedMerge_LinkedList(Alist, Blist);
+    }
+}
+

@@ -47,4 +47,13 @@ void MoveNode_LinkedList(LinkedListNode** aHeadRef, LinkedListNode** bHeadRef);
 // splits original list into two lists where each child list contains alternating elements from original list
 void AlternatingSplit_LinkedList(LinkedListNode** headRef, LinkedListNode** Alist, LinkedListNode** Blist);
 
+// Merges nodes from two list to return one list
+LinkedListNode* ShuffleMerge_LinkedList(LinkedListNode* Alist, LinkedListNode* Blist);
+
+// Given 2 lists in increasing order
+// Returns a sorted merge list
+LinkedListNode* SortedMerge_LinkedList(LinkedListNode* Alist, LinkedListNode* Blist);
+
+// given a list => split the list into two smaller lists and merge them into a single sorted list
+void MergeSort_LinkedList(LinkedListNode** headRef);
 #endif

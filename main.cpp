@@ -11,13 +11,13 @@ int main()
 {
     gPrintFn = printf;
 
-     LinkedListNode* node = Create123_LinkedList();
+     LinkedListNode* node = 0; //Create123_LinkedList();
 
-//#define N 2
-//     int array[N] = {0, 1};
-//
-//     for(int i = 0; i < N; i++)
-//         InsertAtTail_LinkedList(&node, array[i]);
+#define N 3
+     int array[N] = {2, 1, 3};
+
+     for(int i = 0; i < N; i++)
+         InsertAtTail_LinkedList(&node, array[i]);
 
      gPrintFn("Old Linked list: "); Print_LinkedList(node);
 
@@ -84,8 +84,13 @@ int main()
      gPrintFn("New A Linked list: "); Print_LinkedList(a);
      gPrintFn("New B Linked list: "); Print_LinkedList(b);*/
 
+     //LinkedListNode* result = ShuffleMerge_LinkedList(0, 0);
+
+     //LinkedListNode* result = SortedMerge_LinkedList(node, Create123_LinkedList());
+
+
+     //MergeSort_LinkedList(&node);
      gPrintFn("New Linked list: "); Print_LinkedList(node);
-     
 
      return 1;
 }
