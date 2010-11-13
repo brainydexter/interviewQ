@@ -1,5 +1,6 @@
 #include "LinkedListNode.h"
 #include "Problems_LinkedList.h"
+#include "Problems_String.h"
 
 #include <stdio.h>
 #include <iostream>
@@ -13,13 +14,13 @@ int main()
 
      LinkedListNode* node = 0; //Create123_LinkedList();
 
-#define N 3
-     int array[N] = {2, 1, 3};
+#define N 7
+     int array[N] = {1, 2, 3, 4, 5, 6, 7};
 
      for(int i = 0; i < N; i++)
          InsertAtTail_LinkedList(&node, array[i]);
 
-     gPrintFn("Old Linked list: "); Print_LinkedList(node);
+     gPrintFn("Node Linked list: "); Print_LinkedList(node);
 
     /*
     InsertAtTail_LinkedList(&node, 1);
@@ -90,7 +91,22 @@ int main()
 
 
      //MergeSort_LinkedList(&node);
-     gPrintFn("New Linked list: "); Print_LinkedList(node);
+     
 
+	 /*LinkedListNode* elem = NFromEnd_LinkedList(node, 8);
+
+	 gPrintFn("Found element in list: "); Print_LinkedList(elem);*/
+
+	 /*LinkedListNode* newList = Create123_LinkedList();
+	 gPrintFn("New Linked list: "); Print_LinkedList(newList);
+
+	 LinkedListNode* result = SortedIntersect_LinkedList(node, newList);
+	 gPrintFn("Intersect Linked list: "); Print_LinkedList(result);*/
+
+	 //ReverseIterative_LinkedList(&node);
+	 
+	 ReverseRecursive_LinkedList(&node);
+	 gPrintFn("Reversed Node Linked list: "); Print_LinkedList(node);
+	 
      return 1;
 }

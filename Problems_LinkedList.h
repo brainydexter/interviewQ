@@ -56,4 +56,16 @@ LinkedListNode* SortedMerge_LinkedList(LinkedListNode* Alist, LinkedListNode* Bl
 
 // given a list => split the list into two smaller lists and merge them into a single sorted list
 void MergeSort_LinkedList(LinkedListNode** headRef);
+
+// Returns a linked list representing intersection of two linked lists: Alist and Blist, where Alist and Blist are sorted
+LinkedListNode* SortedIntersect_LinkedList(LinkedListNode* Alist, LinkedListNode* Blist);
+
+// reverses a given linked list iteratively in place; by rearranging pointers
+void ReverseIterative_LinkedList(LinkedListNode** headRef);
+
+// reverses a given linked list recursively in place; by rearranging pointers
+void ReverseRecursive_LinkedList(LinkedListNode** headRef);
+
+// returns the Nth node from end of the linked list
+LinkedListNode* NFromEnd_LinkedList( LinkedListNode* head, int N);
 #endif

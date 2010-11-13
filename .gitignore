@@ -2,4 +2,10 @@
 *.ncb
 *.suo
 *.user
+*.sdf
+*.vcxproj*
+*.opensdf
+UpgradeLog.XML
 Debug/
+ipch/
+_UpgradeReport_Files/

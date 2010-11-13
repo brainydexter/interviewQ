@@ -399,3 +399,120 @@ void MergeSort_LinkedList( LinkedListNode** headRef )
     }
 }
 
+// Returns a linked list representing intersection of two linked lists: Alist and Blist, where Alist and Blist are sorted
+LinkedListNode* SortedIntersect_LinkedList(LinkedListNode* Alist, LinkedListNode* Blist)
+{
+	LinkedListNode dummyNode;
+	LinkedListNode* tail = &dummyNode;
+
+	dummyNode.next = 0;
+
+	while( Alist != 0 && Blist != 0)
+	{
+		if( Alist->data > Blist->data )
+			Blist = Blist->next;
+		else if ( Blist->data > Alist->data )
+			Alist = Alist->next;
+		else if( Alist->data == Blist->data )
+		{
+			// push data onto tail of new list
+			LinkedListNode* newNode = new LinkedListNode();
+			newNode->data = Alist->data;
+			newNode->next = 0;
+
+			tail->next = newNode;
+			tail = tail->next;
+
+			Alist = Alist->next;
+			Blist = Blist->next;
+		}
+	}
+
+	return dummyNode.next;
+}
+
+// reverses a given linked list iteratively in place; by rearranging pointers
+void ReverseIterative_LinkedList(LinkedListNode** headRef)
+{
+	LinkedListNode* current = *headRef;
+	LinkedListNode* head = 0;
+
+	LinkedListNode* currentNext = 0;
+	while( current != 0 )
+	{
+		currentNext = current->next;
+
+		current->next = head;
+		head = current;
+
+		current = currentNext;
+	}
+
+	*headRef = head;
+}
+
+// reverses a given linked list recursively in place; by rearranging pointers
+// http://stackoverflow.com/questions/354875/reversing-a-linked-list-in-java-recursively
+// using method of induction
+void ReverseRecursive_LinkedList(LinkedListNode** headRef)
+{
+	// if the list is empty
+	if( *headRef == 0 )
+		return;
+
+	LinkedListNode* current = *headRef;
+
+	// if the list contains only one element => reverse(list) = the element itself
+	if( current->next == 0 )
+		return;
+
+	LinkedListNode* currentNext = current->next;
+	// if the list contains more than 1 element => (1 = A) (set of N Elements = B) => (A) (B) 
+	// => reverse(list) = (reverse(B)) (A) = (B') (A)
+	ReverseRecursive_LinkedList( &currentNext);		// reverse(B)
+
+	// placing (A) after (B')
+	current->next->next = current;
+
+	// making (A) the new tail
+	current->next = 0;
+
+	// making (B') the new head
+	*headRef = currentNext;
+}
+
+// returns the Nth node from end of the linked list
+// N = 0 => last element of the list
+LinkedListNode* NFromEnd_LinkedList( LinkedListNode* head, int N)
+{
+	LinkedListNode* current = head;
+	
+	// advance current to N elements
+	int i = 0;
+	while( i < N )
+	{
+		if(current == 0)
+			return 0;		// index N is smaller than the total length of the linked list
+							// or the list is empty
+		else
+		{
+			i++;
+			current = current->next;
+		}
+	}
+
+	if(current == 0)	// index N is greater than the total length of the linked list
+		return 0;
+
+	LinkedListNode* NfromEnd = head; // NfromEnd is exactly N elements behind current
+
+	//update both NfromEnd and current till end of linked list is reached
+	// At end, nFromEnd will be the answer
+	while(current->next != 0)
+	{
+		NfromEnd = NfromEnd->next;
+		current = current->next;
+	}
+
+	return NfromEnd;
+}
