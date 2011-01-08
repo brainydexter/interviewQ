@@ -3,7 +3,6 @@
 *.suo
 *.user
 *.sdf
-*.vcxproj*
 *.opensdf
 UpgradeLog.XML
 Debug/
