@@ -85,6 +85,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="LinkedListNode.cpp" />
+    <ClCompile Include="main_string.cpp" />
     <ClCompile Include="Problems_LinkedList.cpp" />
     <ClCompile Include="Problems_String.cpp" />
   </ItemGroup>

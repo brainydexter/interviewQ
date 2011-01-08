@@ -33,6 +33,9 @@
     <ClCompile Include="Problems_String.cpp">
       <Filter>String</Filter>
     </ClCompile>
+    <ClCompile Include="main_string.cpp">
+      <Filter>String</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedListNode.h">
