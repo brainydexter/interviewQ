@@ -36,6 +36,12 @@
     <ClCompile Include="main_string.cpp">
       <Filter>String</Filter>
     </ClCompile>
+    <ClCompile Include="Problems_LinkedList1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main_LinkedList1.cpp">
+      <Filter>LinkedList</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedListNode.h">
@@ -46,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="Problems_String.h">
       <Filter>String</Filter>
+    </ClInclude>
+    <ClInclude Include="Problems_LinkedList1.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
