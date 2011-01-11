@@ -19,6 +19,9 @@
     <Filter Include="String">
       <UniqueIdentifier>{cdfb20da-eb65-4495-b5c7-25e50387739d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Trie">
+      <UniqueIdentifier>{b40bf147-7e9b-4c40-ba5b-8cd96c389ec5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,11 +39,17 @@
     <ClCompile Include="main_string.cpp">
       <Filter>String</Filter>
     </ClCompile>
-    <ClCompile Include="Problems_LinkedList1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main_LinkedList1.cpp">
       <Filter>LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="Problems_LinkedList1.cpp">
+      <Filter>LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="Trie_Node.cpp">
+      <Filter>Trie</Filter>
+    </ClCompile>
+    <ClCompile Include="main_Trie.cpp">
+      <Filter>Trie</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -54,7 +63,10 @@
       <Filter>String</Filter>
     </ClInclude>
     <ClInclude Include="Problems_LinkedList1.h">
-      <Filter>Header Files</Filter>
+      <Filter>LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="Trie_Node.h">
+      <Filter>Trie</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
