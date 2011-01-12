@@ -86,6 +86,7 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="LinkedListNode.cpp" />
+    <ClCompile Include="main_Board.cpp" />
     <ClCompile Include="main_LinkedList1.cpp" />
     <ClCompile Include="main_string.cpp" />
     <ClCompile Include="main_Trie.cpp" />

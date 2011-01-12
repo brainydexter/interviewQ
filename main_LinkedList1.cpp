@@ -2,7 +2,7 @@
 //
 //#include <stdio.h>
 //
-int (*gPrintFn)( const char * format, ... ) = 0;
+//int (*gPrintFn)( const char * format, ... ) = 0;
 //
 //int main()
 //{

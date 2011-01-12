@@ -20,6 +20,8 @@ enum Direction
 	TOP_RIGHT
 };
 
+class Trie_Node;
+
 class Board
 {
 public:
@@ -35,6 +37,15 @@ private:
 
 	// 1-D array
 	char matrix[9];	// 3x3
+	int m_Cols, m_Rows;
+
+	// HELPER FUNCTIONS
+
+	// returns index in matrix for given direction; if the new index is legal; else -1
+	int GetIndex(int index, Direction direction);
+	
+	// Traversing into newNode from direction, thus the newNode should not consider this node (which is pointed by opposite of DIR)
+	Direction IncomingDirection(Direction direction);
 };
 
 #endif

@@ -55,7 +55,10 @@
       <Filter>TrieDS</Filter>
     </ClCompile>
     <ClCompile Include="Board.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GameBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="main_Board.cpp">
+      <Filter>GameBoard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,7 +78,7 @@
       <Filter>TrieDS</Filter>
     </ClInclude>
     <ClInclude Include="Board.h">
-      <Filter>Header Files</Filter>
+      <Filter>GameBoard</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
