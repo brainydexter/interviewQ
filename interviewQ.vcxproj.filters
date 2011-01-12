@@ -60,6 +60,9 @@
     <ClCompile Include="main_Board.cpp">
       <Filter>GameBoard</Filter>
     </ClCompile>
+    <ClCompile Include="DictionaryWords.cpp">
+      <Filter>GameBoard</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedListNode.h">
@@ -78,6 +81,9 @@
       <Filter>TrieDS</Filter>
     </ClInclude>
     <ClInclude Include="Board.h">
+      <Filter>GameBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="DictionaryWords.h">
       <Filter>GameBoard</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,59 +1,29 @@
 #include "Board.h"
 
-#include "Trie_Node.h"
+#include "DictionaryWords.h"
 
 extern int (*gPrintFn)( const char * format, ... );
 
-Board::Board(void)
+Board::Board(const char* dictionaryFile, int rows, int cols, char boardLetters[])
+	: m_Rows(rows), m_Cols(cols)
 {
-	/*matrix[0] = 'h'; matrix[1] = 'a'; matrix[2] = 'p';
-	matrix[3] = 'b'; matrix[4] = 'p'; matrix[5] = 'y';
-	matrix[6] = 'e'; matrix[7] = 'y'; matrix[8] = 'e';*/
-
-	matrix[0] = 'y'; matrix[1] = 'o'; matrix[2] = 'x';
+	for(int i = 0; i < (m_Rows * m_Cols); i++)
+	{
+		matrix[i] = boardLetters[i];
+	}
+	/*matrix[0] = 'y'; matrix[1] = 'o'; matrix[2] = 'x';
 	matrix[3] = 'r'; matrix[4] = 'b'; matrix[5] = 'a';
-	matrix[6] = 'y'; matrix[7] = 'e'; matrix[8] = 'd';
+	matrix[6] = 'y'; matrix[7] = 'e'; matrix[8] = 'd';*/
 
-	m_Dictionary = new Trie_Node('\0');
-	/*
-	bred, yore, byre, abed, oread, bore, orby, robed, broad, byroad, robe
-	bored, derby, bade, aero, read, orbed, verb, aery, bead, bread, very, road
-
-	*/
-
-	m_Dictionary->Insert(std::string("bred"));
-	m_Dictionary->Insert(std::string("yore"));
-	m_Dictionary->Insert(std::string("byre"));
-	m_Dictionary->Insert(std::string("abed"));
-	m_Dictionary->Insert(std::string("oread"));
-	m_Dictionary->Insert(std::string("bore"));
-	m_Dictionary->Insert(std::string("orby"));
-	m_Dictionary->Insert(std::string("robed"));
-	m_Dictionary->Insert(std::string("broad"));
-	m_Dictionary->Insert(std::string("byroad"));
-	m_Dictionary->Insert(std::string("robe"));
-	m_Dictionary->Insert(std::string("bored"));
-	m_Dictionary->Insert(std::string("derby"));
-	m_Dictionary->Insert(std::string("bade"));
-	m_Dictionary->Insert(std::string("aero"));
-	m_Dictionary->Insert(std::string("read"));
-	m_Dictionary->Insert(std::string("orbed"));
-	m_Dictionary->Insert(std::string("verb"));
-	m_Dictionary->Insert(std::string("aery"));
-	m_Dictionary->Insert(std::string("bead"));
-	m_Dictionary->Insert(std::string("bread"));
-	m_Dictionary->Insert(std::string("very"));
-	m_Dictionary->Insert(std::string("road"));
-
-
-	m_Cols = 3;
-	m_Rows = 3;
+	mp_Dictionary = new DictionaryWords(dictionaryFile);
 }
 
 
 Board::~Board(void)
 {
-	delete m_Dictionary;
+	delete mp_Dictionary;
+
+	mp_Dictionary = 0;
 }
 
 
@@ -61,15 +31,15 @@ void Board::ProcessAllWords()
 {
 	for(int i = 0; i < 9; i++)
 	{
-		Traverse(string(1, matrix[i]), i, NONE, BoardSet());
+		Traverse(std::string(1, matrix[i]), i, NONE, BoardSet());
 	}
 }
 
 void Board::Traverse(std::string a_str, int index, Direction incoming, BoardSet prevIndices)
 {
-	string currentStr = a_str;
+	std::string currentStr = a_str;
 
-	if( m_Dictionary->Search(currentStr, true) == false)
+	if( mp_Dictionary->Search(currentStr, true) == false)
 		return;
 
 	for( Direction DIR = RIGHT; DIR <= TOP_RIGHT; DIR = (Direction)(DIR + 1))
@@ -81,14 +51,14 @@ void Board::Traverse(std::string a_str, int index, Direction incoming, BoardSet 
 
 			if( rightIndex != -1 && prevIndices.count(rightIndex) == 0 )
 			{
-				string l_string = currentStr + matrix[rightIndex];
-				while( m_Dictionary->Search(l_string, true) )	// see if pattern exists in Dictionary
+				std::string l_string = currentStr + matrix[rightIndex];
+				while( mp_Dictionary->Search(l_string, true) )	// see if pattern exists in Dictionary
 				{
 					prevIndices.insert(index);
 					Traverse(l_string, rightIndex, IncomingDirection( DIR ), prevIndices );
 
 					// when control reaches here, tree is at its leaf
-					if(m_Dictionary->Search(l_string) == true)
+					if(mp_Dictionary->Search(l_string) == true)
 					{
 						gPrintFn(" %s \n", l_string.c_str() );
 					}
@@ -97,30 +67,6 @@ void Board::Traverse(std::string a_str, int index, Direction incoming, BoardSet 
 			}
 		}
 	}
-
-	/*
-	// process right node
-		if( incoming != RIGHT ) // if traverse was called from the node that is right to this node
-		{
-			int rightIndex = GetIndex(RIGHT);
-
-			if( rightIndex != -1 && prevIndices.count(rightIndex) == 0 )
-			{
-				string l_string = currentStr.append(1, matrix[rightIndex]);
-				while( m_Dictionary->Search(l_string, true) )	// see if pattern exists in Dictionary
-				{
-					if(m_Dictionary->Search(l_string) == true)
-					{
-						gPrintFn(" %s \n", l_string.c_str() );
-					}
-
-					currentStr = l_string;
-					prevIndices.insert(index);
-					Traverse(currentStr, rightIndex, IncomingDirection( RIGHT ), prevIndices );
-				}
-			}
-		}
-	*/
 }
 
 // returns index in matrix for given direction; if the new index is legal; else -1

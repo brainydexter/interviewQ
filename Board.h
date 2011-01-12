@@ -3,9 +3,8 @@
 
 #include <string>
 #include <set>
-using namespace std;
 
-typedef set<int> BoardSet;
+typedef std::set<int> BoardSet;
 
 enum Direction
 {
@@ -20,12 +19,12 @@ enum Direction
 	TOP_RIGHT
 };
 
-class Trie_Node;
+class DictionaryWords;
 
 class Board
 {
 public:
-	Board(void);
+	Board(const char* dictionaryFile, int rows, int cols, char boardLetters[]);
 	~Board(void);
 
 	void ProcessAllWords();
@@ -33,7 +32,7 @@ public:
 
 private:
 	// MEMBER DATA
-	Trie_Node* m_Dictionary;
+	DictionaryWords* mp_Dictionary;
 
 	// 1-D array
 	char matrix[9];	// 3x3
