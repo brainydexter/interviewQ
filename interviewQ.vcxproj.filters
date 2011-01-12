@@ -19,8 +19,11 @@
     <Filter Include="String">
       <UniqueIdentifier>{cdfb20da-eb65-4495-b5c7-25e50387739d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Trie">
+    <Filter Include="TrieDS">
       <UniqueIdentifier>{b40bf147-7e9b-4c40-ba5b-8cd96c389ec5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameBoard">
+      <UniqueIdentifier>{af182386-c150-4022-8360-b49f37a104d3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -46,10 +49,13 @@
       <Filter>LinkedList</Filter>
     </ClCompile>
     <ClCompile Include="Trie_Node.cpp">
-      <Filter>Trie</Filter>
+      <Filter>TrieDS</Filter>
     </ClCompile>
     <ClCompile Include="main_Trie.cpp">
-      <Filter>Trie</Filter>
+      <Filter>TrieDS</Filter>
+    </ClCompile>
+    <ClCompile Include="Board.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -66,7 +72,10 @@
       <Filter>LinkedList</Filter>
     </ClInclude>
     <ClInclude Include="Trie_Node.h">
-      <Filter>Trie</Filter>
+      <Filter>TrieDS</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -83,6 +83,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Board.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="LinkedListNode.cpp" />
     <ClCompile Include="main_LinkedList1.cpp" />
@@ -94,6 +95,7 @@
     <ClCompile Include="Trie_Node.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Board.h" />
     <ClInclude Include="LinkedListNode.h" />
     <ClInclude Include="Problems_LinkedList.h" />
     <ClInclude Include="Problems_LinkedList1.h" />
