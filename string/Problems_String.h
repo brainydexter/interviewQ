@@ -10,5 +10,8 @@ void ReverseWordsOrder_Sentence_String(char *pCharBuf);
 // Returns the length of the string
 unsigned int Length_String(char *pCharBuf);
 
+// Deletes characters in str that belong to remove[]
+void RemoveChars(char str[], char remove[]);
+
 
 #endif

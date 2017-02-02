@@ -79,3 +79,44 @@ unsigned int Length_String(char *pCharBuf)
 
 	return length;
 }
+
+// Deletes characters in str that belong to remove[]
+// O(n) time and O(256) space
+void RemoveChars(char str[], char remove[])
+{
+    /*
+     - for each char in str
+     - if ch is a part of remove[]
+     - remove ch
+
+     deleting elements from str:
+     - readIndex = writeIndex = 0
+     - readIndex++ => ch
+     - if ch is not part of remove:
+      - write ch at writeIndex
+      - writeIndex++
+     - else // part of remove
+      - dont write ch or increment writeIndex
+     */
+    bool blackListChars[256];
+    for (int i = 0; i < 256; ++i)
+        blackListChars[i] = false;
+
+    while(*remove)
+    {
+        blackListChars[ *remove] = true;
+        remove++;
+    }
+
+    int writeIndex = 0;
+    for(int readIndex = 0; str[readIndex] != '\0'; readIndex++)
+    {
+        char ch = str[readIndex];
+        if(blackListChars[ch] == false)
+        {
+            str[writeIndex] = ch;
+            writeIndex++;
+        }
+    }
+    str[writeIndex] = '\0';
+}
