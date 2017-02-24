@@ -17,24 +17,6 @@ void DisplayList(Node* head);
 void Insert(Node** head, int data);
 void Insert(Node** head, Node* node);
 Node* ConvertArToList(int* ar, int size);
-void Reverse(Node** head);
-
-void Reverse(Node** head){
-	Node* newHead = NULL;
-
-	Node* current = *head;
-
-	while(current){
-		Node* next = current->next;
-
-		current->next = newHead;
-		newHead = current;
-
-		current = next;
-	}
-
-	*head = newHead;
-}
 
 void DisplayList(Node* head){
 
